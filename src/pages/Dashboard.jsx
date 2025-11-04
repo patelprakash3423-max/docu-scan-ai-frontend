@@ -16,6 +16,7 @@ import {
 import { useAuth } from '../context/AuthContext.js';
 import DocumentUpload from '../components/DocumentUpload.jsx';
 import DocumentList from '../components/DocumentList.jsx';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const Dashboard = () => {
   const { user, token } = useAuth();
@@ -31,7 +32,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/documents', {
+        const res = await axios.get(`${API_BASE_URL}/documents`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
